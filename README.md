@@ -1,24 +1,9 @@
-# README
+# 基礎編理解度確認テスト
+  
+基礎編課題の理解度を確認するためのテストです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+以下の手順で環境構築を行ってください。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby 2.6.6 を設定
+- プロジェクトで利用するgemをインストール
+- データベース、テーブルを作成
