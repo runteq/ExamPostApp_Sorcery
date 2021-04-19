@@ -10,11 +10,11 @@ RSpec.describe "Users", type: :system do
       visit 'users/new'
 
       # labelの存在確認
-      expect(page).to have_content('Last name'), 'Last name というラベルが表示されていることを確認してください'
-      expect(page).to have_content('First name'), 'First name というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password'), 'Password というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password confirmation'), 'Password confirmation というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Last name', 'Last name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'First name', 'First name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password confirmation', 'Password confirmation というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='user_last_name']"), 'Last name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -35,8 +35,8 @@ RSpec.describe "Users", type: :system do
       click_on '登録'
 
       # 処理結果の確認
-      expect(page).to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されていません'
-      expect(current_path).to eq(login_path), 'ユーザー作成後にログイン画面に遷移できていません'
+      expect(page).to have_content('User was successfully created.'), 'ユーザー作成の成功後に『User was successfully created.』のメッセージが表示されていません'
+      expect(current_path).to eq('/login'), 'ユーザー作成後にログイン画面に遷移できていません'
     end
 
     it '1-2：同じメールアドレスのユーザーは新規登録できない' do
@@ -47,11 +47,11 @@ RSpec.describe "Users", type: :system do
       visit 'users/new'
 
       # labelの存在確認
-      expect(page).to have_content('Last name'), 'Last name というラベルが表示されていることを確認してください'
-      expect(page).to have_content('First name'), 'First name というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password'), 'Password というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password confirmation'), 'Password confirmation というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Last name', 'Last name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'First name', 'First name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password confirmation', 'Password confirmation というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='user_last_name']"), 'Last name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -72,8 +72,8 @@ RSpec.describe "Users", type: :system do
       click_on '登録'
 
       # 処理結果の確認
-      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されています'
-      expect(page).to have_content('User creation failed.'), 'ユーザー作成失敗のメッセージが表示されていません'
+      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成の失敗時に『User was successfully created.』のメッセージが表示されています'
+      expect(page).to have_content('User creation failed.'), 'ユーザー作成の失敗時に『User creation failed.』のメッセージが表示されていません'
     end
 
     it '1-3：入力項目が不足している場合に新規登録ができない' do
@@ -81,11 +81,11 @@ RSpec.describe "Users", type: :system do
       visit 'users/new'
 
       # labelの存在確認
-      expect(page).to have_content('Last name'), 'Last name というラベルが表示されていることを確認してください'
-      expect(page).to have_content('First name'), 'First name というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password'), 'Password というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password confirmation'), 'Password confirmation というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Last name', 'Last name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'First name', 'First name というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password confirmation', 'Password confirmation というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='user_last_name']"), 'Last name というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -106,8 +106,8 @@ RSpec.describe "Users", type: :system do
       click_on '登録'
 
       # 処理結果の確認
-      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されています'
-      expect(page).to have_content('User creation failed.'), 'ユーザー作成失敗のメッセージが表示されていません'
+      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成の失敗時に『User was successfully created.』のメッセージが表示されています'
+      expect(page).to have_content('User creation failed.'), 'ユーザー作成の失敗時に『User creation failed.』のメッセージが表示されていません'
     end
   end
 end

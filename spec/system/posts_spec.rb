@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe "Posts", type: :system do
   describe '確認観点4：投稿機能' do
     let!(:user){ create(:user) }
-    let(:another_user){ create(:user, email: 'another_user@example.com') }
+    let(:another_user){ create(:user) }
 
     before do
       # 確認対象の画面に移動
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_content('Email'), 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Password'), 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -37,8 +37,8 @@ RSpec.describe "Posts", type: :system do
       click_on 'Edit'
 
       # labelの存在確認
-      expect(page).to have_content('Title'), 'Title というラベルが表示されていることを確認してください'
-      expect(page).to have_content('Content'), 'Content というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Title', 'Title というラベルが表示されていることを確認してください'
+      expect(page).to have_selector 'label', text: 'Content', 'Content というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='post_title']"), 'Title というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -52,7 +52,7 @@ RSpec.describe "Posts", type: :system do
       fill_in 'Content', with: 'edited_content'
       click_on 'Update Post'
 
-      expect(page).to have_content('Post was successfully updated.'), '投稿編集成功のメッセージが表示されていません'
+      expect(page).to have_content('Post was successfully updated.'), '投稿編集の成功時に『Post was successfully updated.』のメッセージが表示されていません'
       expect(current_path).to eq(post_path(Post.find_by(title: 'edited_title'))), '投稿編集後に投稿詳細画面に遷移できていません'
       expect(page).to have_content('edited_title'), '編集した投稿のタイトルが表示されていません'
       expect(page).to have_content('edited_content'), '編集した投稿の本文が表示されていません'
@@ -67,8 +67,8 @@ RSpec.describe "Posts", type: :system do
       # 削除リンクの存在確認
       expect(page).to have_content('Destroy'), '自分の投稿に削除用のリンクが表示されているかを確認してください'
       page.accept_confirm { click_on 'Destroy' }
-      expect(page).to have_content('Post was successfully destroyed.'), '投稿削除成功のメッセージが表示されていません'
-      expect(current_path).to eq(posts_path), '投稿編集後に投稿一覧画面に遷移できていません'
+      expect(page).to have_content('Post was successfully destroyed.'), '投稿削除の成功時に『Post was successfully destroyed.』のメッセージが表示されていません'
+      expect(current_path).to eq('/posts'), '投稿削除後に投稿一覧画面に遷移できていません'
     end
 
     it '4-3：他人の投稿に編集リンクが表示されない' do
