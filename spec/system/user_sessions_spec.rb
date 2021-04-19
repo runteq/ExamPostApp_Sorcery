@@ -11,8 +11,8 @@ RSpec.describe "UserSessions", type: :system do
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -39,8 +39,8 @@ RSpec.describe "UserSessions", type: :system do
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -67,8 +67,8 @@ RSpec.describe "UserSessions", type: :system do
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -95,8 +95,8 @@ RSpec.describe "UserSessions", type: :system do
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -125,8 +125,8 @@ RSpec.describe "UserSessions", type: :system do
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
