@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Posts", type: :system do
   describe '確認観点4：投稿機能' do
     let!(:user){ create(:user) }
-    let(:another_user){ create(:user, email: 'another_user@example.com') }
+    let(:another_user){ create(:user) }
 
     before do
       # 確認対象の画面に移動
