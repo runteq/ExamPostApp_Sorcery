@@ -28,7 +28,7 @@ RSpec.describe "UserSessions", type: :system do
 
       # 処理結果の確認
       expect(page).to have_content('Login successful.'), 'ログイン成功のメッセージが表示されていません'
-      expect(current_path).to eq(posts_path), 'ログイン後に投稿一覧画面に遷移できていません'
+      expect(current_path).to eq('/posts'), 'ログイン後に投稿一覧画面に遷移できていません'
     end
 
     it '2-2：入力項目が不足している場合にログインができない' do

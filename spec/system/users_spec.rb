@@ -36,7 +36,7 @@ RSpec.describe "Users", type: :system do
 
       # 処理結果の確認
       expect(page).to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されていません'
-      expect(current_path).to eq(login_path), 'ユーザー作成後にログイン画面に遷移できていません'
+      expect(current_path).to eq('/login'), 'ユーザー作成後にログイン画面に遷移できていません'
     end
 
     it '1-2：同じメールアドレスのユーザーは新規登録できない' do
