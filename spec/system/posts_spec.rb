@@ -10,8 +10,8 @@ RSpec.describe "Posts", type: :system do
       visit '/login'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Email', 'Email というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Password', 'Password というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label',text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
@@ -37,8 +37,8 @@ RSpec.describe "Posts", type: :system do
       click_on 'Edit'
 
       # labelの存在確認
-      expect(page).to have_selector 'label', text: 'Title', 'Title というラベルが表示されていることを確認してください'
-      expect(page).to have_selector 'label', text: 'Content', 'Content というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Title'), 'Title というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Content'), 'Content というラベルが表示されていることを確認してください'
 
       # labelとフィールドの対応付け確認
       expect(page).to have_css("label[for='post_title']"), 'Title というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
