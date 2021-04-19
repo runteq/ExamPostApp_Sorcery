@@ -35,7 +35,7 @@ RSpec.describe "Users", type: :system do
       click_on '登録'
 
       # 処理結果の確認
-      expect(page).to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されていません'
+      expect(page).to have_content('User was successfully created.'), 'ユーザー作成の成功後に『User was successfully created.』のメッセージが表示されていません'
       expect(current_path).to eq('/login'), 'ユーザー作成後にログイン画面に遷移できていません'
     end
 
@@ -72,8 +72,8 @@ RSpec.describe "Users", type: :system do
       click_on '登録'
 
       # 処理結果の確認
-      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されています'
-      expect(page).to have_content('User creation failed.'), 'ユーザー作成失敗のメッセージが表示されていません'
+      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成の失敗時に『User was successfully created.』のメッセージが表示されています'
+      expect(page).to have_content('User creation failed.'), 'ユーザー作成の失敗時に『User creation failed.』のメッセージが表示されていません'
     end
 
     it '1-3：入力項目が不足している場合に新規登録ができない' do
@@ -106,8 +106,8 @@ RSpec.describe "Users", type: :system do
       click_on '登録'
 
       # 処理結果の確認
-      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成のメッセージが表示されています'
-      expect(page).to have_content('User creation failed.'), 'ユーザー作成失敗のメッセージが表示されていません'
+      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成の失敗時に『User was successfully created.』のメッセージが表示されています'
+      expect(page).to have_content('User creation failed.'), 'ユーザー作成の失敗時に『User creation failed.』のメッセージが表示されていません'
     end
   end
 end
