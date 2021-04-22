@@ -69,8 +69,8 @@ RSpec.describe "Posts", type: :system do
       page.accept_confirm { click_on 'Destroy' }
 
       # 処理結果の確認
-      expect(page).not_to have_content post.title, '投稿が削除できているかを確認してください'
       expect(current_path).to eq('/posts'), '投稿削除後に投稿一覧画面に遷移できていません'
+      expect(page).not_to have_content(post.title), '投稿が削除できているかを確認してください'
     end
 
     it '4-3：他人の投稿に編集リンクが表示されない' do
