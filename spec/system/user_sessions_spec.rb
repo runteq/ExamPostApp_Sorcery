@@ -27,7 +27,7 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
-      expect(current_path).to eq('/login'), 'ログイン処理が正しく行えるかを確認してください'
+      expect(current_path).not_to eq('/login'), 'ログイン処理が正しく行えるかを確認してください'
       expect(current_path).to eq('/posts'), 'ログイン後に投稿一覧画面に遷移できていません'
     end
 
