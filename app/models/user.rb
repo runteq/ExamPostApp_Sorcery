@@ -13,7 +13,8 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { maximum: 255 }
 
   def mine?(object)
-    # [注意]ここでは current_user は使用できないため、idで比較する
+    # 呼び出し元のオブジェクトのIDを示す self.id を省略した記法。
+    # @user.mine?(object)のように利用すると、object.user_id と @user.id を比較する。
     object.user_id == id
   end
 end
