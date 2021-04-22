@@ -27,7 +27,7 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
-      expect(page).to have_content('Login successful.'), 'ログインの成功時に『Login successful.』のメッセージが表示されていません'
+      expect(current_path).to eq('/login'), 'ログイン処理が正しく行えるかを確認してください'
       expect(current_path).to eq('/posts'), 'ログイン後に投稿一覧画面に遷移できていません'
     end
 
@@ -55,8 +55,8 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
-      expect(page).not_to have_content('Login successful.'), 'ログインの失敗時に『Login successful.』のメッセージが表示されています'
-      expect(page).to have_content('Login failed.'), 'ログインの失敗時に『Login failed.』のメッセージが表示されていません'
+      expect(current_path).not_to eq('/posts'), '入力項目が不足している場合にログインできていないかを確認してください'
+      expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
     end
 
     it '2-3：存在しないユーザーでログインができない' do
@@ -83,8 +83,8 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
-      expect(page).not_to have_content('Login successful.'), 'ログインの失敗時に『Login successful.』のメッセージが表示されています'
-      expect(page).to have_content('Login failed.'), 'ログインの失敗時に『Login failed.』のメッセージが表示されていません'
+      expect(current_path).not_to eq('/posts'), '存在しないユーザーでログインできていないかを確認してください'
+      expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
     end
 
     it '2-4：パスワードが間違っている場合にログインができない' do
@@ -111,8 +111,8 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
-      expect(page).not_to have_content('Login successful.'), 'ログインの失敗時に『Login successful.』のメッセージが表示されています'
-      expect(page).to have_content('Login failed.'), 'ログインの失敗時に『Login failed.』のメッセージが表示されていません'
+      expect(current_path).not_to eq('/posts'), 'パスワードが間違っている場合にログインできていないかを確認してください'
+      expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
     end
   end
 
@@ -149,7 +149,7 @@ RSpec.describe "UserSessions", type: :system do
       click_on 'ログアウト'
 
       # 処理結果の確認
-      expect(page).to have_content('Logout successful.'), 'ログアウトの成功時に『Logout successful.』のメッセージが表示されていません'
+      expect(page).to have_button('ログイン'), 'ログアウトができているかを確認してください'
     end
 
     it '3-2：ログインしていない場合、ユーザーのログアウトリンクが表示されない' do

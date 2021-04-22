@@ -27,15 +27,14 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_button('登録'), '登録ボタンが表示されていることを確認してください'
 
       # ユーザー新規登録処理
-      fill_in 'Last name', with: 'test01'
-      fill_in 'First name', with: 'test01'
-      fill_in 'Email', with: 'test01@example.com'
-      fill_in 'Password', with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-      click_on '登録'
-
-      # 処理結果の確認
-      expect(page).to have_content('User was successfully created.'), 'ユーザー作成の成功後に『User was successfully created.』のメッセージが表示されていません'
+      expect {
+        fill_in 'Last name', with: 'test01'
+        fill_in 'First name', with: 'test01'
+        fill_in 'Email', with: 'test01@example.com'
+        fill_in 'Password', with: 'password'
+        fill_in 'Password confirmation', with: 'password'
+        click_on '登録'
+      }.to change { User.count }.by(1) # 処理結果の確認
       expect(current_path).to eq('/login'), 'ユーザー作成後にログイン画面に遷移できていません'
     end
 
@@ -64,16 +63,14 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_button('登録'), '登録ボタンが表示されていることを確認してください'
 
       # ユーザー新規登録処理
-      fill_in 'Last name', with: 'test01'
-      fill_in 'First name', with: 'test01'
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-      click_on '登録'
-
-      # 処理結果の確認
-      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成の失敗時に『User was successfully created.』のメッセージが表示されています'
-      expect(page).to have_content('User creation failed.'), 'ユーザー作成の失敗時に『User creation failed.』のメッセージが表示されていません'
+      expect {
+        fill_in 'Last name', with: 'test01'
+        fill_in 'First name', with: 'test01'
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: 'password'
+        fill_in 'Password confirmation', with: 'password'
+        click_on '登録'
+      }.to change { User.count }.by(0) # 処理結果の確認
     end
 
     it '1-3：入力項目が不足している場合に新規登録ができない' do
@@ -98,16 +95,14 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_button('登録'), '登録ボタンが表示されていることを確認してください'
 
       # ユーザー新規登録処理
-      fill_in 'Last name', with: nil
-      fill_in 'First name', with: nil
-      fill_in 'Email', with: nil
-      fill_in 'Password', with: nil
-      fill_in 'Password confirmation', with: nil
-      click_on '登録'
-
-      # 処理結果の確認
-      expect(page).not_to have_content('User was successfully created.'), 'ユーザー作成の失敗時に『User was successfully created.』のメッセージが表示されています'
-      expect(page).to have_content('User creation failed.'), 'ユーザー作成の失敗時に『User creation failed.』のメッセージが表示されていません'
+      expect {
+        fill_in 'Last name', with: nil
+        fill_in 'First name', with: nil
+        fill_in 'Email', with: nil
+        fill_in 'Password', with: nil
+        fill_in 'Password confirmation', with: nil
+        click_on '登録'
+      }.to change { User.count }.by(0) # 処理結果の確認
     end
   end
 end
