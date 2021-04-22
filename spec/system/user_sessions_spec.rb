@@ -55,6 +55,8 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
+      expect(current_path).not_to eq('/posts'), '入力項目が不足している場合にログインできていないかを確認してください'
+      expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
       expect(page).not_to have_content('Login successful.'), 'ログインの失敗時に『Login successful.』のメッセージが表示されています'
       expect(page).to have_content('Login failed.'), 'ログインの失敗時に『Login failed.』のメッセージが表示されていません'
     end
@@ -83,6 +85,8 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
+      expect(current_path).not_to eq('/posts'), '存在しないユーザーでログインできていないかを確認してください'
+      expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
       expect(page).not_to have_content('Login successful.'), 'ログインの失敗時に『Login successful.』のメッセージが表示されています'
       expect(page).to have_content('Login failed.'), 'ログインの失敗時に『Login failed.』のメッセージが表示されていません'
     end
@@ -111,6 +115,8 @@ RSpec.describe "UserSessions", type: :system do
       click_button 'ログイン'
 
       # 処理結果の確認
+      expect(current_path).not_to eq('/posts'), 'パスワードが間違っている場合にログインできていないかを確認してください'
+      expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
       expect(page).not_to have_content('Login successful.'), 'ログインの失敗時に『Login successful.』のメッセージが表示されています'
       expect(page).to have_content('Login failed.'), 'ログインの失敗時に『Login failed.』のメッセージが表示されていません'
     end
@@ -149,6 +155,7 @@ RSpec.describe "UserSessions", type: :system do
       click_on 'ログアウト'
 
       # 処理結果の確認
+      expect(page).to have_button('ログイン'), 'ログアウトができているかを確認してください'
       expect(page).to have_content('Logout successful.'), 'ログアウトの成功時に『Logout successful.』のメッセージが表示されていません'
     end
 

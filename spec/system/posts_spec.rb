@@ -59,7 +59,7 @@ RSpec.describe "Posts", type: :system do
     end
 
     it '4-2：自分の投稿を削除することができる' do
-      create(:post, user: user)
+      post = create(:post, user: user)
 
       # 確認対象の画面に移動
       visit '/posts'
@@ -68,6 +68,7 @@ RSpec.describe "Posts", type: :system do
       expect(page).to have_content('Destroy'), '自分の投稿に削除用のリンクが表示されているかを確認してください'
       page.accept_confirm { click_on 'Destroy' }
       expect(page).to have_content('Post was successfully destroyed.'), '投稿削除の成功時に『Post was successfully destroyed.』のメッセージが表示されていません'
+      expect(page).not_to have_content post.title, '投稿が削除できているかを確認してください'
       expect(current_path).to eq('/posts'), '投稿削除後に投稿一覧画面に遷移できていません'
     end
 
