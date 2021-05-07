@@ -18,4 +18,3 @@ class UserSessionsController < ApplicationController
     redirect_to login_path, success: 'Logout successful.'
   end
 end
-
