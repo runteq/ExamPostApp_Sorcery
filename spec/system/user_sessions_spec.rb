@@ -114,6 +114,40 @@ RSpec.describe "UserSessions", type: :system do
       expect(current_path).not_to eq('/posts'), 'パスワードが間違っている場合にログインできていないかを確認してください'
       expect(current_path).to eq('/login'), 'ログインの失敗時に別の画面の遷移していないかを確認してください'
     end
+
+    it '2-5：複数ユーザー登録時に問題なくログインができる' do
+      # テストデータの用意
+      first_user = create(:user) # describe使わないので、let!を使わずに記載
+      second_user = create(:user) # describe使わないので、let!を使わずに記載
+      third_user = create(:user) # describe使わないので、let!を使わずに記載
+
+      # 確認対象の画面に移動
+      visit '/login'
+
+      # labelの存在確認
+      expect(page).to have_selector('label', text: 'Email'), 'Email というラベルが表示されていることを確認してください'
+      expect(page).to have_selector('label', text: 'Password'), 'Password というラベルが表示されていることを確認してください'
+
+      # labelとフィールドの対応付け確認
+      expect(page).to have_css("label[for='email']"), 'Email というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+      expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
+
+      # ログイン用ボタンの存在確認
+      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+
+      # ユーザーログイン処理
+      fill_in 'Email', with: second_user.email
+      fill_in 'Password', with: 'password'
+      click_button 'ログイン'
+
+      # 処理結果の確認
+      expect(current_path).not_to eq('/login'), 'ログイン処理が正しく行えるかを確認してください'
+
+      find('#header-profile').click
+      expect(page).not_to have_content("#{first_user.last_name} #{first_user.first_name}"), '最初に登録されたユーザーでログインされています。ログイン時のロジックを確認してください'
+      expect(page).to have_content("#{second_user.last_name} #{second_user.first_name}"), '複数のユーザーを作成した状態で、正しくログインができるかを確認してください'
+      expect(page).not_to have_content("#{third_user.last_name} #{third_user.first_name}"), '最後に登録されたユーザーでログインされています。ログイン時のロジックを確認してください'
+    end
   end
 
   describe '確認観点3：ユーザーログアウト' do
