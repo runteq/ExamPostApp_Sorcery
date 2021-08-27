@@ -96,7 +96,7 @@ GEM
     faraday-excon (1.1.0)
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
-    ffi (1.15.0)
+    ffi (1.15.3)
     font-awesome-sass (5.11.2)
       sassc (>= 1.11)
     globalid (0.4.2)
