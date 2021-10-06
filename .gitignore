@@ -7,7 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore vendor
+# Ignore vendor for CodeCommit Build
 /vendor
 
 # Ignore the default SQLite database.
