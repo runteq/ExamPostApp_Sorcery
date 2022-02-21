@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bootstrap', '~> 4.5.0'
 gem 'font-awesome-sass', '~> 5.11.2'
+gem 'sassc', '2.1.0'
 gem 'jquery-rails'
 gem 'sorcery', '0.15.0'
 
