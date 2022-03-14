@@ -6,7 +6,7 @@
 
 - Ruby 2.6.6 を設定
 - プロジェクトで利用するgemをインストール
-  - `bundle config set --local path 'vendor/bundle'` 
+  - `bundle config --local path 'vendor/bundle'` 
   - `bundle config --local build.sassc -- --disable-march-tune-native`
   - `bundle install`
 - データベース、テーブルを作成
