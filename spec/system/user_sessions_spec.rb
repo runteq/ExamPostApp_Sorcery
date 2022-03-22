@@ -80,7 +80,7 @@ RSpec.describe "UserSessions", type: :system do
       # ユーザーログイン処理
       fill_in 'Email', with: 'another_user@example.com'
       fill_in 'Password', with: 'password'
-      click_button 'ログイン'
+      click_button 'Login'
 
       # 処理結果の確認
       expect(current_path).not_to eq('/posts'), '存在しないユーザーでログインできていないかを確認してください'
