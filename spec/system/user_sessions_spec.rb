@@ -180,7 +180,7 @@ RSpec.describe "UserSessions", type: :system do
       # ログアウト用ボタンの存在確認
       expect(page).to have_link('Logout'), 'ログアウトのボタンが表示されていることを確認してください'
 
-      click_on 'ログアウト'
+      click_on 'Logout'
 
       # 処理結果の確認
       expect(page).to have_button('Login'), 'ログアウトができているかを確認してください'
