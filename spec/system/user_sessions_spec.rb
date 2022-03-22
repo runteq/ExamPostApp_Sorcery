@@ -19,12 +19,12 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'password'
-      click_button 'ログイン'
+      click_button 'Login'
 
       # 処理結果の確認
       expect(current_path).not_to eq('/login'), 'ログイン処理が正しく行えるかを確認してください'
@@ -47,12 +47,12 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: nil
       fill_in 'Password', with: nil
-      click_button 'ログイン'
+      click_button 'Login'
 
       # 処理結果の確認
       expect(current_path).not_to eq('/posts'), '入力項目が不足している場合にログインできていないかを確認してください'
@@ -75,7 +75,7 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: 'another_user@example.com'
@@ -103,12 +103,12 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'wrong_password'
-      click_button 'ログイン'
+      click_button 'Login'
 
       # 処理結果の確認
       expect(current_path).not_to eq('/posts'), 'パスワードが間違っている場合にログインできていないかを確認してください'
@@ -133,12 +133,12 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: second_user.email
       fill_in 'Password', with: 'password'
-      click_button 'ログイン'
+      click_button 'Login'
 
       # 処理結果の確認
       expect(current_path).not_to eq('/login'), 'ログイン処理が正しく行えるかを確認してください'
@@ -167,23 +167,23 @@ RSpec.describe "UserSessions", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'password'
-      click_button 'ログイン'
+      click_button 'Login'
 
       # ユーザーログアウト処理
       find('#header-profile').click
 
       # ログアウト用ボタンの存在確認
-      expect(page).to have_link('ログアウト'), 'ログアウトのボタンが表示されていることを確認してください'
+      expect(page).to have_link('Logout'), 'ログアウトのボタンが表示されていることを確認してください'
 
       click_on 'ログアウト'
 
       # 処理結果の確認
-      expect(page).to have_button('ログイン'), 'ログアウトができているかを確認してください'
+      expect(page).to have_button('Login'), 'ログアウトができているかを確認してください'
     end
 
     it '3-2：ログインしていない場合、ユーザーのログアウトリンクが表示されない' do
@@ -191,7 +191,7 @@ RSpec.describe "UserSessions", type: :system do
       visit '/login'
 
       # 処理結果の確認
-      expect(page).not_to have_link('ログアウト'), 'ログインしていない場合でも、ログアウトリンクが表示されています'
+      expect(page).not_to have_link('Logout'), 'ログインしていない場合でも、ログアウトリンクが表示されています'
     end
   end
 end
