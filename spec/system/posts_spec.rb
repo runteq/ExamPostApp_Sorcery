@@ -18,12 +18,12 @@ RSpec.describe "Posts", type: :system do
       expect(page).to have_css("label[for='password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
       # ログイン用ボタンの存在確認
-      expect(page).to have_button('ログイン'), 'ログイン用のボタンが表示されていることを確認してください'
+      expect(page).to have_button('Login'), 'ログイン用のボタンが表示されていることを確認してください'
 
       # ユーザーログイン処理
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'password'
-      click_button 'ログイン'
+      click_button 'Login'
     end
 
     it '4-1：自分の投稿を編集することができる' do
