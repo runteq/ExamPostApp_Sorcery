@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_04_17_042717) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
