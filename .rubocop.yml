@@ -1,4 +1,7 @@
 # This file overrides https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+
+require:
+  - rubocop-rails
   
 AllCops:
   NewCops: enable
