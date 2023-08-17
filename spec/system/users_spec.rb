@@ -4,8 +4,8 @@ require 'rails_helper'
 RSpec.describe "Users", type: :system do
   let(:user) { create(:user) }
 
-  describe '確認観点1：ユーザー新規登録' do
-    it '1-1：ユーザーの新規登録ができる' do
+  describe '確認観点1：ユーザー新規作成' do
+    it '1-1：ユーザーの新規作成ができる' do
       # 確認対象の画面に移動
       visit 'users/new'
 
@@ -23,22 +23,22 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_css("label[for='user_password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_password_confirmation']"), 'Password confirmation というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
-      # 登録ボタンの存在確認
-      expect(page).to have_button('登録'), '登録ボタンが表示されていることを確認してください'
+      # ユーザー作成用ボタンの存在確認
+      expect(page).to have_button('Create User'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
-      # ユーザー新規登録処理
+      # ユーザー新規作成用の処理
       expect {
         fill_in 'Last name', with: 'test01'
         fill_in 'First name', with: 'test01'
         fill_in 'Email', with: 'test01@example.com'
         fill_in 'Password', with: 'password'
         fill_in 'Password confirmation', with: 'password'
-        click_on '登録'
+        click_on 'Create User'
       }.to change { User.count }.by(1) # 処理結果の確認
       expect(current_path).to eq('/login'), 'ユーザー作成後にログイン画面に遷移できていません'
     end
 
-    it '1-2：同じメールアドレスのユーザーは新規登録できない' do
+    it '1-2：同じメールアドレスのユーザーは新規作成できない' do
       # テストデータの用意
       user = create(:user) # describe使わないので、let!を使わずに記載
 
@@ -59,21 +59,21 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_css("label[for='user_password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_password_confirmation']"), 'Password confirmation というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
-      # 登録ボタンの存在確認
-      expect(page).to have_button('登録'), '登録ボタンが表示されていることを確認してください'
+      # ユーザー作成用ボタンの存在確認
+      expect(page).to have_button('Create User'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
-      # ユーザー新規登録処理
+      # ユーザー新規作成用の処理
       expect {
         fill_in 'Last name', with: 'test01'
         fill_in 'First name', with: 'test01'
         fill_in 'Email', with: user.email
         fill_in 'Password', with: 'password'
         fill_in 'Password confirmation', with: 'password'
-        click_on '登録'
+        click_on 'Create User'
       }.to change { User.count }.by(0) # 処理結果の確認
     end
 
-    it '1-3：入力項目が不足している場合に新規登録ができない' do
+    it '1-3：入力項目が不足している場合に新規作成ができない' do
       # 確認対象の画面に移動
       visit 'users/new'
 
@@ -91,17 +91,17 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_css("label[for='user_password']"), 'Password というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
       expect(page).to have_css("label[for='user_password_confirmation']"), 'Password confirmation というラベルをクリックすると対応するフィールドにフォーカスすることを確認してください'
 
-      # 登録ボタンの存在確認
-      expect(page).to have_button('登録'), '登録ボタンが表示されていることを確認してください'
+      # ユーザー作成用ボタンの存在確認
+      expect(page).to have_button('Create User'), 'ユーザー作成用のボタンが表示されていることを確認してください'
 
-      # ユーザー新規登録処理
+      # ユーザー新規作成用の処理
       expect {
         fill_in 'Last name', with: nil
         fill_in 'First name', with: nil
         fill_in 'Email', with: nil
         fill_in 'Password', with: nil
         fill_in 'Password confirmation', with: nil
-        click_on '登録'
+        click_on 'Create User'
       }.to change { User.count }.by(0) # 処理結果の確認
     end
   end
